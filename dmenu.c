@@ -156,6 +156,7 @@ drawitem(struct item *item, int x, int y, int w)
 	else
 		drw_setscheme(drw, scheme[SchemeNorm]);
 
+
 	return drw_text(drw, x, y, w, bh, lrpad / 2, item->text, 0);
 }
 
@@ -613,16 +614,15 @@ insert:
 			calcoffsets();
 		}
 		break;
-	case XK_Tab:
-		puts((sel && !(ev->state & ShiftMask)) ? sel->text : text);
-		if (!(ev->state & ControlMask)) {
-			cleanup();
-			exit(0);
-		}
-		if (sel)
-			sel->out = 1;
-		break;
-	}
+ 	case XK_Tab:
+       if (!sel)
+            return;
+        cursor = strnlen(sel->text, sizeof text - 1);
+        memcpy(text, sel->text, cursor);
+        text[cursor] = '\0';
+        match();
+        break;
+    }
 
 draw:
 	drawmenu();
@@ -865,7 +865,7 @@ readxresources(void) {
 			colors[SchemeNorm][ColFg] = strdup(xval.addr);
 		else
 			colors[SchemeNorm][ColFg] = strdup(colors[SchemeNorm][ColFg]);
-		if (XrmGetResource(xdb, "color4", "*", &type, &xval))
+		if (XrmGetResource(xdb, "color1", "*", &type, &xval))
 			colors[SchemeSel][ColBg] = strdup(xval.addr);
 		else
 			colors[SchemeSel][ColBg] = strdup(colors[SchemeSel][ColBg]);
