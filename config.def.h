@@ -8,7 +8,7 @@ static int min_width = 300;                    /* minimum width when centered */
 static int max_width = 900;                    /* maximum width when centered */
 /* -fn option overrides fonts[0]; default X11 font or font set */
 static const char *fonts[] = {
-    "Rxen Sans:size=14",
+    "Rxen Sans:size=14:style=italic",
     "Symbols Nerd Font:Size=14"
 };
 static const char *prompt      = NULL;      /* -p  option; prompt to the left of input field */
