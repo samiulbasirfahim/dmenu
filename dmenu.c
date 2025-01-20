@@ -839,8 +839,8 @@ setup(void)
 static void
 usage(void)
 {
-	die("usage: dmenu [-bfiv] [-l lines] [-h height] [-p prompt] [-fn font] [-m monitor]\n"
-	    "             [-nb color] [-nf color] [-sb color] [-sf color] [-w windowid]");
+	die("usage: dmenu [-bfiv] [-l lines] [-h height] [-w width] [-p prompt] [-fn font]\n"
+	    "          [-m monitor] [-nb color] [-nf color] [-sb color] [-sf color]");
 }
 
 void
@@ -923,8 +923,8 @@ main(int argc, char *argv[])
 			colortemp[2] = argv[++i];
 		else if (!strcmp(argv[i], "-sf"))  /* selected foreground color */
 			colortemp[3] = argv[++i];
-		else if (!strcmp(argv[i], "-w"))   /* embedding window id */
-			embed = argv[++i];
+		else if (!strcmp(argv[i], "-w"))   /* embedding width */
+			min_width = atoi(argv[++i]);
 		else if (!strcmp(argv[i], "-bw"))
 			border_width = atoi(argv[++i]); /* border width */
 		else

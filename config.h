@@ -8,8 +8,8 @@ static int min_width = 300;                    /* minimum width when centered */
 static int max_width = 900;                    /* maximum width when centered */
 /* -fn option overrides fonts[0]; default X11 font or font set */
 static const char *fonts[] = {
-    "Rxen Sans:size=14:style=italic",
-    "Symbols Nerd Font:Size=14"
+    "Rxen Sans:size=15:style=italic",
+    "Symbols Nerd Font:Size=15"
 };
 static const char *prompt      = NULL;      /* -p  option; prompt to the left of input field */
 static const char *colors[SchemeLast][2] = {
@@ -35,4 +35,4 @@ static unsigned int min_lineheight = 35;
 static const char worddelimiters[] = " ";
 
 /* Size of the window border */
-static unsigned int border_width = 5;
+static unsigned int border_width = 10;
